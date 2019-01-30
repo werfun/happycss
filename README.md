@@ -18,7 +18,7 @@ a [webpack](http://webpack.github.io/) loader for css
 
 ## Install
 
-`npm install happycss`
+`npm install happycss` or 
 `yarn add happycss`
 
 ## webpack config
