@@ -8,6 +8,10 @@ var CssList = []
 var css = ''
 var GenerateCSSRegs = [
   {
+    className: 'fontSize',
+    regExp: /(f\d+p?)/g
+  },
+  {
     className: 'width',
     regExp: /(w\d+p?)/g
   },
@@ -26,8 +30,8 @@ var GenerateCSSRegs = [
   {
     className: 'padding',
     regExp: /(p[trbl]?n?\d+)/g
-  }
-    
+  },
+
 ]
 
 Array.prototype.contains = function(val) {
@@ -43,15 +47,11 @@ String.prototype.contains = function(val) {
 }
 
 module.exports = function autoStyle (fileSource) {
-  // let str = "<div class='h10 w10'></div><div class='h20 w20'><img class='mt100'/></div>"
   let str = fileSource
-  // let matchList = str.match(/class\s*=\s*["'][a-zA-Z0-9\s]+["']/g)
   let matchList = str.match(/staticClass:\s*["'][a-zA-Z0-9\s]+["']/g)
   matchList && matchList.forEach(item => {
     let val = item.trim().substring(14)
-    val = val.substring(0, val.length -1)
-    let regClass = val.split(' ')
-    regClass.forEach(classStr => {
+    val.substring(0, val.length -1).split(' ').forEach(classStr => {
       filterClass(classStr)
     })
   })
@@ -76,6 +76,12 @@ module.exports = function autoStyle (fileSource) {
           case 'padding':
             var direction = v.contains('t') ? '-top' : v.contains('r') ? '-right' : v.contains('b') ? '-bottom' : v.contains('l') ? '-left' : '';
             css += '.' + v + ' { padding' + direction + ': ' + (v.contains('n') ? '-' : '') + numVal + 'px; }\n';　　// n开头的值，代表负值
+            break
+          case 'LineHeight':
+            css += `.${v} { line-height: ${numVal}${v.contains('p') ? '%' : 'px'}; }\n`
+            break
+          case 'fontSize':
+            css += `.${v} { font-size: ${numVal}${v.contains('p') ? '%' : 'px'}; }\n`
             break
         }
       }
