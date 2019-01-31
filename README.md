@@ -11,7 +11,7 @@
 
 <p>The default unit is px, if you need to use%</p>
 
-< p > If you add class= "w10p", you will generate width: 10%</p>.
+<p> If you add class= "w10p", you will generate width: 10%</p>.
 
 <p>The default generation path is/src/assets/css/happycss.css (make sure that the CSS directory already exists)</p>
 
@@ -29,9 +29,9 @@ a [webpack](http://webpack.github.io/) loader for css
 
 ## Install
 
-<p>`npm install happycss`</p>
+<p>npm install happycss</p>
 <p>or</p>
-<p>`yarn add happycss`</p>
+<p>yarn add happycss</p>
 
 ## webpack config
 
