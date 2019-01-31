@@ -3,9 +3,9 @@ function GetStringNumValue(str) {
     return str.match(/[0-9]+/)
 }
 
-/* 动态生成样式 */
-var CssList = []
-var css = ''
+let CssList = []
+let css = ''
+
 var GenerateCSSRegs = [
   {
     className: 'fontSize',
@@ -47,9 +47,10 @@ String.prototype.contains = function(val) {
 
 module.exports = function autoStyle (fileSource) {
   let str = fileSource
-  let matchList = str.match(/staticClass:\s*["'][a-zA-Z0-9\s]+["']/g)
+  let matchList = str.match(/staticClass:\s*["'][a-zA-Z0-9\-_\s]+["']/g)
   matchList && matchList.forEach(item => {
     let val = item.trim().substring(14)
+    console.log('valval', val)
     val.substring(0, val.length -1).split(' ').forEach(classStr => {
       filterClass(classStr)
     })

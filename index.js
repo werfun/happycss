@@ -1,19 +1,20 @@
 let autoStyle = require('./base')
 const fs = require("fs")
-let cssStr = ''
+
 
 function Happycss(options = {}) {
   this.cssPath  = options.cssPath  || "/src/assets/css/happycss.css"
   this.importPath = options.importPath || "/src/main.js"
+  this.cssStr = ''
 }
 
 Happycss.prototype.apply = function (compiler) {
-  
-  compiler.hooks.emit.tapAsync('happycss', (compilation, callback) => {
+  let _this = this
+  compiler.hooks.emit.tapAsync('Happycss', (compilation, callback) => {
     compilation.chunks.forEach(function(chunk){
       for (let module of chunk.modulesIterable) {
         if (module._source) {
-          cssStr = autoStyle(module._source._value)       
+          _this.cssStr = autoStyle(module._source._value)       
         }
       }
     })
@@ -28,16 +29,16 @@ Happycss.prototype.apply = function (compiler) {
       if (!exists) {
         fs.open(cssPath, "w", (err, fd) => {
           let cssContent = fs.readFileSync(cssPath, "utf8")
-          if (cssContent !== cssStr) {
-            fs.writeFileSync(cssPath, cssStr)
+          if (cssContent !== _this.cssStr) {
+            fs.writeFileSync(cssPath, _this.cssStr)
           }
           fs.close(fd)
         })
       } else {
         fs.open(cssPath, "r", (err, fd) => {
           let cssContent = fs.readFileSync(cssPath, "utf8")
-          if (cssContent !== cssStr) {
-            fs.writeFileSync(cssPath, cssStr)
+          if (cssContent !== _this.cssStr) {
+            fs.writeFileSync(cssPath, _this.cssStr)
           }
           fs.close(fd)
         })
