@@ -9,7 +9,7 @@
 
 a [webpack](http://webpack.github.io/) loader for css
 
-[![NPM version][npm-image]][npm-url]
+
 [![Downloads][downloads-image]][downloads-url]
 
 [npm-url]: https://www.npmjs.com/package/happycss
