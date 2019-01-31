@@ -82,6 +82,10 @@ module.exports = {
 
 ## Change Log
 
+### 0.1.1
+
+* 增加对class类名中 横行'-' 、 '_'的支持
+
 ### 0.1.0
 
 * Support Webpack 4.0
