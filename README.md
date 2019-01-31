@@ -7,15 +7,15 @@
 <p>默认生成路径为 /src/assets/css/happycss.css (请确保已经存在css目录)</p>
 <p>默认导出路径为 /src/main.js (非该目录，请配置 importPath)</p>
 
-<p> This is a plug-in that can automatically generate CSS style. You only need to write class= "w10" in vue, and it will automatically generate width: 10px;</p>.
+<p> This is a plug-in that can automatically generate CSS style. You only need to write class= "w10" in vue, and it will automatically generate width: 10px;</p>
 
 <p>The default unit is px, if you need to use%</p>
 
-<p> If you add class= "w10p", you will generate width: 10%</p>.
+<p> If you add class= "w10p", you will generate width: 10%</p>
 
 <p>The default generation path is/src/assets/css/happycss.css (make sure that the CSS directory already exists)</p>
 
-<p> The default export path is / src/main.js. (If not this directory, configure importPath)</p>.
+<p> The default export path is / src/main.js. (If not this directory, configure importPath)</p>
 
 
 a [webpack](http://webpack.github.io/) loader for css
