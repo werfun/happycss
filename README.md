@@ -12,7 +12,6 @@ a [webpack](http://webpack.github.io/) loader for css
 [![NPM version][npm-image]][npm-url]
 [![Downloads][downloads-image]][downloads-url]
 
-[npm-image]: https://img.shields.io/npm/v/px2rem-loader.svg
 [npm-url]: https://www.npmjs.com/package/happycss
 [downloads-image]: http://img.shields.io/npm/dm/px2rem-loader.svg
 [downloads-url]: https://www.npmjs.com/package/happycss
