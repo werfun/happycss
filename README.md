@@ -2,8 +2,8 @@
 # happycss
 这是一款可以自动生成css样式的插件，你只需要在 vue中写入 class="w10", 就会自动生成width: 10px;
 默认单位为px,如果你需要使用%，请添加如 class="w10p",则会生成 width: 10%
-默认生成路径为 /src/assets/css/happycss.css
-默认导出路径为 /src/main.js
+默认生成路径为 /src/assets/css/happycss.css (请确保已经存在css目录)
+默认导出路径为 /src/main.js (非该目录，请配置 importPath)
 
 
 a [webpack](http://webpack.github.io/) loader for css

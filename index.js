@@ -10,6 +10,7 @@ function Happycss(options = {}) {
 
 Happycss.prototype.apply = function (compiler) {
   let _this = this
+
   compiler.plugin('emit', function(compilation, callback){
     compilation.chunks.forEach(function(chunk){
         chunk.forEachModule(function(module){
@@ -25,18 +26,29 @@ Happycss.prototype.apply = function (compiler) {
 
     let cssPath = process.cwd() + _this.cssPath
     let importPath = process.cwd() + _this.importPath
-    fs.open(cssPath, "r+", (err, fd) => {
-      console.log(fd)
-      let cssContent = fs.readFileSync(cssPath, "utf8")
-      if (cssContent !== cssStr) {
-        fs.writeFileSync(cssPath, cssStr)
+    
+    fs.exists(cssPath, exists => {
+      if (!exists) {
+        fs.open(cssPath, "w", (err, fd) => {
+          let cssContent = fs.readFileSync(cssPath, "utf8")
+          if (cssContent !== cssStr) {
+            fs.writeFileSync(cssPath, cssStr)
+          }
+          fs.close(fd)
+        })
+      } else {
+        fs.open(cssPath, "r", (err, fd) => {
+          let cssContent = fs.readFileSync(cssPath, "utf8")
+          if (cssContent !== cssStr) {
+            fs.writeFileSync(cssPath, cssStr)
+          }
+          fs.close(fd)
+        })
       }
-      
-      fs.close(fd)
-    })
+    })  
+    
 
     fs.open(importPath, "r", (err, fd) => {
-      console.log(fd)
       let importContent = `import '${cssPath}'`
       let mainContent = fs.readFileSync(importPath, "utf8")
       if (mainContent.indexOf(importContent) === -1) {

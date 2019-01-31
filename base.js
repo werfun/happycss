@@ -31,7 +31,6 @@ var GenerateCSSRegs = [
     className: 'padding',
     regExp: /(p[trbl]?n?\d+)/g
   },
-
 ]
 
 Array.prototype.contains = function(val) {
