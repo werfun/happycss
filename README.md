@@ -1,9 +1,10 @@
 
 # happycss
-这是一款可以自动生成css样式的插件，你只需要在 vue中写入 class="w10", 就会自动生成width: 10px;
-默认单位为px,如果你需要使用%，请添加如 class="w10p",则会生成 width: 10%
-默认生成路径为 /src/assets/css/happycss.css (请确保已经存在css目录)
-默认导出路径为 /src/main.js (非该目录，请配置 importPath)
+<p>这是一款可以自动生成css样式的插件，你只需要在 vue中写入 class="w10", 就会自动生成width: 10px;</p>
+<p>默认单位为px,如果你需要使用%</p>
+<p>请添加如 class="w10p",则会生成 width: 10%</p>
+<p>默认生成路径为 /src/assets/css/happycss.css (请确保已经存在css目录)</p>
+<p>默认导出路径为 /src/main.js (非该目录，请配置 importPath)</p>
 
 
 a [webpack](http://webpack.github.io/) loader for css
@@ -18,8 +19,9 @@ a [webpack](http://webpack.github.io/) loader for css
 
 ## Install
 
-`npm install happycss` or 
-`yarn add happycss`
+<p>`npm install happycss`</p>
+<p>or</p>
+<p>`yarn add happycss`</p>
 
 ## webpack config
 
@@ -35,6 +37,23 @@ module.exports = {
   ]
 }
 ```
+## vue-cli 3.0 vue.config.js
+
+const happycss = require('happycss')
+```
+module.exports = {
+  // ...
+  configureWebpack: {
+    plugins: [
+      new happycss({
+        // cssPath: './src/assets/css/happycss.css'
+        // importPath: './src/main.js'
+      })
+    ]
+  }
+}
+```
+
 ##具体规则如下
 
 <table>
@@ -60,5 +79,21 @@ module.exports = {
     <td>class="lh10"</td><td>.lh10 { line-height: 10px }</td>
   </tr>
 </table>
-## 
 
+
+## Change Log
+
+### 0.1.0
+
+* Support Webpack 4.0
+
+### 0.0.6
+
+* Support Webpack 3.0
+* + auto create happycss.css file
+
+
+
+## License
+
+MIT

@@ -3,30 +3,27 @@ const fs = require("fs")
 let cssStr = ''
 
 function Happycss(options = {}) {
-  this.options = options
   this.cssPath  = options.cssPath  || "/src/assets/css/happycss.css"
   this.importPath = options.importPath || "/src/main.js"
 }
 
 Happycss.prototype.apply = function (compiler) {
-  let _this = this
-
-  compiler.plugin('emit', function(compilation, callback){
+  
+  compiler.hooks.emit.tapAsync('happycss', (compilation, callback) => {
     compilation.chunks.forEach(function(chunk){
-        chunk.forEachModule(function(module){
-          if (module._source) {
-            cssStr = autoStyle(module._source._value)       
-          }
-        })
-        chunk.files.forEach(function(filename){
-          let source = compilation.assets[filename].source()
-          // console.log('file', source)
-        })
+      for (let module of chunk.modulesIterable) {
+        if (module._source) {
+          cssStr = autoStyle(module._source._value)       
+        }
+      }
     })
 
-    let cssPath = process.cwd() + _this.cssPath
-    let importPath = process.cwd() + _this.importPath
+    let cssPath = process.cwd() + this.cssPath
+    let importPath = process.cwd() + this.importPath
     
+
+    // 判断css文件是否存在，无则创建，前提是css目录必须存在
+
     fs.exists(cssPath, exists => {
       if (!exists) {
         fs.open(cssPath, "w", (err, fd) => {
@@ -47,6 +44,7 @@ Happycss.prototype.apply = function (compiler) {
       }
     })  
     
+    // 导出文件路径
 
     fs.open(importPath, "r", (err, fd) => {
       let importContent = `import '${cssPath}'`
@@ -59,4 +57,5 @@ Happycss.prototype.apply = function (compiler) {
     callback()
   })
 }
+
 module.exports = Happycss
