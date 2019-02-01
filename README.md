@@ -10,7 +10,7 @@
 
 <br/><br/>
 
-<p> This is a plug-in that can automatically generate CSS style. You only need to write class= "w10" in vue, and it will automatically generate width: 10px;</p>
+<p> This is a plugin that can automatically generate CSS style. You only need to write class= "w10" in vue, and it will automatically generate width: 10px;</p>
 <p>The default unit is px, if you need to use%</p>
 <p> If you add class= "w10p", you will generate width: 10%</p>
 <p>The default generation path is/src/assets/css/happycss.css (make sure that the CSS directory already exists)</p>
