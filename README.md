@@ -95,6 +95,12 @@ module.exports = {
 
 ## Change Log
 
+### 0.2.0
+
+* compatible webpack 3.0\4.0
+
+* 兼容webpack 3.0和4.0
+
 ### 0.1.1
 
 * Increase support for crossing'-','_'in class class names
@@ -105,14 +111,12 @@ module.exports = {
 
 * Support Webpack 4.0
 
-* 支持webpack 4.0
+* 只支持webpack 4.0
 
 ### 0.0.6
 
-* Support Webpack 3.0
 * auto create happycss.css file
 
-* 支持 Webpack 3.0
 * 自动生成 happycss.css 文件
 
 ## License
