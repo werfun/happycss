@@ -31,6 +31,10 @@ var GenerateCSSRegs = [
     className: 'padding',
     regExp: /(p[trbl]?n?\d+)/g
   },
+  {
+    className: 'color',
+    regExp: /([cC]-[0-9a-zA-Z]+)/g,
+  },
 ]
 
 Array.prototype.contains = function(val) {
@@ -60,6 +64,7 @@ module.exports = function autoStyle (fileSource) {
    
   reactList && reactList.forEach(item => {
     let val = item.trim().substring(12)
+    console.log(val)
     val.substring(0, val.length -1).split(' ').forEach(classStr => {
       filterClass(classStr)
     })
@@ -69,7 +74,7 @@ module.exports = function autoStyle (fileSource) {
     let v = classStr
     let numVal = GetStringNumValue(v)
     GenerateCSSRegs.forEach(cssRegs => {
-      if (v.match(cssRegs.regExp) && v.length && !CssList.contains(v) && numVal) {
+      if (v.match(cssRegs.regExp) && v.length && !CssList.contains(v) && (numVal || v.contains('-'))) {
         CssList.push(v)
         switch (cssRegs.className) {
           case 'width': 
@@ -91,6 +96,9 @@ module.exports = function autoStyle (fileSource) {
             break
           case 'fontSize':
             css += `.${v} { font-size: ${numVal}${v.contains('p') ? '%' : 'px'}; }\n`
+            break
+          case 'color':
+            css += `.${v} { color: #${v.split('-')[1]}; }\n`
             break
         }
       }

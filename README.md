@@ -8,7 +8,7 @@
 <p>默认导出路径为 /src/main.js (非该目录，请配置 importPath)</p>
 <p>最重要的，插件不影响px2rem使用！！！</p>
 
-
+<br/><br/>
 
 <p> This is a plug-in that can automatically generate CSS style. You only need to write class= "w10" in vue, and it will automatically generate width: 10px;</p>
 <p>The default unit is px, if you need to use%</p>
@@ -90,6 +90,9 @@ module.exports = {
   <tr>
     <td>class="lh10"</td><td>.lh10 { line-height: 10px }</td>
   </tr>
+    <tr>
+    <td>class="c-fff"(只支持16进制格式)</td><td>.c-fff { color: #fff }</td>
+  </tr>
 </table>
 
 
@@ -112,6 +115,12 @@ module.exports = {
 </table>
 
 ## Change Log
+
+### 0.3.0
+
+* Support color
+
+* 增加对color的支持
 
 ### 0.3.0
 
