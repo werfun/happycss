@@ -72,8 +72,8 @@ module.exports = {
   <tr>
     <td>use(写法)</td><td>generate(生成)</td>
   </tr>
-  <tr>
-    <td>class="w10"</td><td>.w10 { width: 10px }</td>
+    <tr>
+    <td>css</td><td>.w10 { width: 10px }</td>
   </tr>
   <tr>
     <td>class="w10p"</td><td>.w10 { width: 10% }</td>
@@ -82,16 +82,34 @@ module.exports = {
     <td>class="h10"</td><td>.h10 { height: 10px }</td>
   </tr>
   <tr>
-    <td>class="mt10"</td><td>.mt { margin-top: 10px }</td>
+    <td>class="mt10"(mt mr mb ml)</td><td>.mt { margin-top: 10px }</td>
   </tr>
   <tr>
-    <td>class="pt10"</td><td>.pt { padding-top: 10px }</td>
+    <td>class="pt10"(pt pr pb pl)</td><td>.pt { padding-top: 10px }</td>
   </tr>
   <tr>
     <td>class="lh10"</td><td>.lh10 { line-height: 10px }</td>
   </tr>
 </table>
 
+
+## options
+## 参数
+
+<table>
+  <tr>
+    <td>content(内容)</td><td>function(作用)</td><td>default(默认值)</td><td>type</td>
+  </tr>
+  <tr>
+    <td>cssPath</td><td>css生成文件路径</td><td>./src/assets/css/happycss.css</td><td>String</td>
+  </tr>
+  <tr>
+    <td>importPath</td><td>css导出文件路径</td><td>./src/main.js</td><td>String</td>
+  </tr>
+  <tr>
+    <td>autoImport</td><td>是否自动生成import链接</td><td>true</td><td>Boolean</td>
+  </tr>
+</table>
 
 ## Change Log
 

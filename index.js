@@ -3,9 +3,21 @@ const fs = require("fs")
 
 
 function Happycss(options = {}) {
-  this.cssPath  = options.cssPath  || "/src/assets/css/happycss.css"
-  this.importPath = options.importPath || "/src/main.js"
   this.cssStr = ''
+  /**
+   * 导出路径
+   */
+  this.cssPath  = options.cssPath  || "/src/assets/css/happycss.css"
+  
+  /**
+   * 导入路径
+   */
+  this.importPath = options.importPath || "/src/main.js"
+
+  /**
+   * 是否自动导出
+   */
+  this.autoImport = options.autoImport === false || true
 }
 
 Happycss.prototype.apply = function (compiler) {
@@ -34,7 +46,6 @@ Happycss.prototype.apply = function (compiler) {
       commonFun(callback)
     })
   }
-  
 
   function commonFun (callback) {
     let cssPath = process.cwd() + _this.cssPath
@@ -63,14 +74,16 @@ Happycss.prototype.apply = function (compiler) {
     
     // 导出文件路径
 
-    fs.open(importPath, "r", (err, fd) => {
-      let importContent = `import '${cssPath}'`
-      let mainContent = fs.readFileSync(importPath, "utf8")
-      if (mainContent.indexOf(importContent) === -1) {
-        fs.appendFileSync(importPath, importContent)
-      }
-      fs.close(fd)
-    })
+    if (_this.autoImport) {
+      fs.open(importPath, "r", (err, fd) => {
+        let importContent = `import '${cssPath}'`
+        let mainContent = fs.readFileSync(importPath, "utf8")
+        if (mainContent.indexOf(importContent) === -1) {
+          fs.appendFileSync(importPath, importContent)
+        }
+        fs.close(fd)
+      })
+    }
     callback()
   }
 }

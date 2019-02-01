@@ -1,6 +1,6 @@
 {
   "name": "happycss",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "happycss for you webpack project",
   "main": "index.js",
   "scripts": {
