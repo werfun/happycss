@@ -45,16 +45,26 @@ String.prototype.contains = function(val) {
   return this.indexOf(val) >= 0
 }
 
+let num = 0
 module.exports = function autoStyle (fileSource) {
   let str = fileSource
-  let matchList = str.match(/staticClass:\s*["'][a-zA-Z0-9\-_\s]+["']/g)
-  matchList && matchList.forEach(item => {
+  let vueList = str.match(/staticClass:\s*["'][a-zA-Z0-9\-_\s]+["']/g)
+  let reactList = str.match(/className:\s*["'][a-zA-Z0-9\-_\s]+["']/g)
+  
+  vueList && vueList.forEach(item => {
     let val = item.trim().substring(14)
     val.substring(0, val.length -1).split(' ').forEach(classStr => {
       filterClass(classStr)
     })
   })
    
+  reactList && reactList.forEach(item => {
+    let val = item.trim().substring(12)
+    val.substring(0, val.length -1).split(' ').forEach(classStr => {
+      filterClass(classStr)
+    })
+  })
+
   function filterClass (classStr) {
     let v = classStr
     let numVal = GetStringNumValue(v)

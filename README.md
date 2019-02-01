@@ -1,7 +1,7 @@
 
 # happycss
 
-<p>这是一款可以自动生成css样式的插件，你只需要在 vue中写入 class="w10", 就会自动生成width: 10px;</p>
+<p>这是一款可以自动生成css样式的插件，你只需要在 vue中写入 class="w10",或者 react 中 className="w10", 就会自动生成width: 10px;</p>
 <p>默认单位为px,如果你需要使用%</p>
 <p>请添加如 class="w10p",则会生成 width: 10%</p>
 <p>默认生成路径为 /src/assets/css/happycss.css (请确保已经存在css目录)</p>
@@ -112,6 +112,12 @@ module.exports = {
 </table>
 
 ## Change Log
+
+### 0.3.0
+
+* Support react
+
+* 增加对react的支持 (外部文件新增样式，需要刷新页面)
 
 ### 0.2.0
 
