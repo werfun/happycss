@@ -116,7 +116,7 @@ module.exports = {
 
 ## Change Log
 
-### 0.3.0
+### 0.3.1
 
 * Support color
 
