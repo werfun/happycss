@@ -117,7 +117,7 @@ module.exports = {
 ## 注意事项
 
 <p>1.请勿对生成文件happycss.css文件进行添加操作，因为每次编译，都会生成全新的文件。</p>
-<p>2.import 生成路径，默认为系统路径,可手动移至文件顶部。</p>
+<p>2.import 生成路径，默认为系统路径,可手动移至文件顶部。反感路径太长，可配置autoImport 为false后，手动引入css文件</p>
 
 ## Change Log
 
