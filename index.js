@@ -17,7 +17,7 @@ function Happycss(options = {}) {
   /**
    * 是否自动导出
    */
-  this.autoImport = options.autoImport === false || true
+  this.autoImport = options.autoImport !== false
 }
 
 Happycss.prototype.apply = function (compiler) {
