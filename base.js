@@ -9,31 +9,31 @@ let css = ''
 var GenerateCSSRegs = [
   {
     className: 'fontSize',
-    regExp: /(^f\d+p?&)/g
+    regExp: /(f\d+p?)/g
   },
   {
     className: 'width',
-    regExp: /(^w\d+p?&)/g
+    regExp: /(w\d+p?)/g
   },
   {
     className: 'height',
-    regExp: /(^h\d+p?&)/g,
+    regExp: /(h\d+p?)/g,
   },
   {
     className: 'LineHeight',
-    regExp: /(^lh\d+&)/g
+    regExp: /(lh\d+)/g
   },
   {
     className: 'margin',
-    regExp: /(^m[trbl]?n?\d+&)/g
+    regExp: /(m[trbl]?n?\d+)/g
   },
   {
     className: 'padding',
-    regExp: /(^p[trbl]?n?\d+&)/g
+    regExp: /(p[trbl]?n?\d+)/g
   },
   {
     className: 'color',
-    regExp: /(^[cC]-[0-9a-zA-Z]+&)/g,
+    regExp: /^[cC]-[0-9a-zA-Z]+/g,
   },
 ]
 
@@ -64,7 +64,6 @@ module.exports = function autoStyle (fileSource) {
    
   reactList && reactList.forEach(item => {
     let val = item.trim().substring(12)
-    console.log(val)
     val.substring(0, val.length -1).split(' ').forEach(classStr => {
       filterClass(classStr)
     })
