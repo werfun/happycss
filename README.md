@@ -41,8 +41,8 @@ module.exports = {
   // ...
   plugins: [
     new happycss({
-      // cssPath: './src/assets/css/happycss.css'
-      // importPath: './src/main.js'
+      // cssPath: '/src/assets/css/happycss.css'
+      // importPath: '/src/main.js'
     }),
   ]
 }
@@ -56,8 +56,8 @@ module.exports = {
   configureWebpack: {
     plugins: [
       new happycss({
-        // cssPath: './src/assets/css/happycss.css'
-        // importPath: './src/main.js'
+        // cssPath: '/src/assets/css/happycss.css'
+        // importPath: '/src/main.js'
       })
     ]
   }
